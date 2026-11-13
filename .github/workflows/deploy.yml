@@ -12,9 +12,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,17 +28,23 @@ jobs:
           cache: pnpm
           cache-dependency-path: web/pnpm-lock.yaml
 
+      - name: Validate repository structure
+        run: |
+          test -f web/package.json
+          test -f web/pnpm-lock.yaml
+          test -f web/next.config.ts
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm --dir web install --frozen-lockfile
 
       - name: Typecheck
-        run: pnpm typecheck
+        run: pnpm --dir web typecheck
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm --dir web lint
 
       - name: Build
-        run: pnpm build
+        run: pnpm --dir web build
 
       - name: Deploy to Vercel
         run: pnpm dlx vercel deploy --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
