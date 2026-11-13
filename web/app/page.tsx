@@ -4,8 +4,6 @@ import ContactDialog from "@/components/contact-dialog";
 const whatsappUrl =
   "https://wa.me/56973896121";
 const phoneNumber = "+56227349542";
-const mapUrl =
-  "https://www.google.com/maps/search/?api=1&query=Independencia%202522%2C%20Independencia%2C%20Chile";
 
 function WhatsAppIcon() {
   return <Image src="/assets/whatsapp.svg" alt="" width={44} height={44} aria-hidden="true" />;
@@ -78,21 +76,14 @@ export default function Home() {
           <p>Independencia 2522, Independencia</p>
         </div>
 
-        <a
+        <iframe
           className="map-link"
-          href={mapUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Abrir ubicación de la consulta en Google Maps"
-        >
-          <Image
-            src="/assets/consultation-map.png"
-            alt="Mapa de la consulta en Independencia 2522"
-            fill
-            sizes="(min-width: 760px) 50vw, 100vw"
-          />
-          <span>Abrir mapa</span>
-        </a>
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.265588682141!2d-70.66512212422407!3d-33.40309006023785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c7c0cfc89ec1%3A0xb66f312d30c8d205!2sConsulta%20Pedi%C3%A1trica%20Dra.%20Anamar%C3%ADa%20Pe%C3%B1a!5e1!3m2!1sen!2scl!4v1794592774196!5m2!1sen!2scl"
+          title="Mapa de la consulta pediátrica en Independencia 2522"
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
 
         <div className="schedule">
           <h2>Horario de atención:</h2>
