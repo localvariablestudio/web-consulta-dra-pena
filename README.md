@@ -37,6 +37,6 @@ Configura estos secrets en el repositorio de GitHub:
 - `VERCEL_ORG_ID`
 - `VERCEL_PROJECT_ID`
 
-El proyecto de Vercel debe usar `web` como directorio raíz. Si se configura un dominio, agrega `NEXT_PUBLIC_SITE_URL` al entorno de producción para generar correctamente el sitemap, robots.txt y la URL canónica.
+El proyecto de Vercel debe usar `web` como directorio raíz. La URL canónica, `robots.txt` y `sitemap.xml` utilizan `https://www.pediatraanamaria.cl` y se centralizan en `web/app/site.ts`.
 
 El número telefónico todavía no está publicado: debe configurarse en `web/app/page.tsx` antes de activar el enlace `tel:`.

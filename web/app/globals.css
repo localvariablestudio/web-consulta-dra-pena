@@ -54,6 +54,11 @@ h1 {
   text-align: center;
 }
 
+p{
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 18px;
+}
+
 .portrait {
   width: calc(100% - 126px);
   height: 270px;

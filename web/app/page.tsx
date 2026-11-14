@@ -1,9 +1,39 @@
 import Image from "next/image";
 import ContactDialog from "@/components/contact-dialog";
+import { siteUrl } from "./site";
 
 const whatsappUrl =
   "https://wa.me/56973896121";
 const phoneNumber = "+56227349542";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Dra. Anamaría Peña",
+  url: siteUrl,
+  telephone: phoneNumber,
+  medicalSpecialty: "https://schema.org/Pediatric",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Independencia 2522",
+    addressLocality: "Independencia",
+    addressRegion: "Región Metropolitana",
+    addressCountry: "CL",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Thursday"],
+      opens: "12:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Wednesday",
+      opens: "10:00",
+      closes: "17:30",
+    },
+  ],
+};
 
 function WhatsAppIcon() {
   return <Image src="/assets/whatsapp.svg" alt="" width={44} height={44} aria-hidden="true" />;
@@ -12,6 +42,12 @@ function WhatsAppIcon() {
 export default function Home() {
   return (
     <main className="page-shell">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="hero" aria-labelledby="page-title">
         <h1 id="page-title">
           Consulta Pediátrica
@@ -47,6 +83,11 @@ export default function Home() {
       <section className="description" aria-label="Atención pediátrica">
         <p className="intro">
           Atención integral y personalizada para recién nacidos, niños, niñas y adolescentes.
+        </p>
+        <p>
+          Pediatra de la Universidad de Chile con más de 30 años de experiencia.
+          Atención presencial en Av. Independencia 2522 a pacientes de la zona norte de Santiago: Recoleta, Conchalí, Huechuraba, Quilicura, Renca. 
+          <br />Telemedicina disponible sin restricciones geográficas.
         </p>
         <ul>
           <li>
